@@ -24,7 +24,7 @@ RUN docker-php-ext-install mysql && \
 
 RUN docker-php-ext-install tokenizer
 
-RUN apt-get install -y zlib1g-dev libicu-dev g++ && \
+RUN apt-get update -yqq && apt-get install -y zlib1g-dev libicu-dev g++ && \
         docker-php-ext-configure intl && \
         docker-php-ext-install intl \
         && rm -rf /var/lib/apt/lists/* \
