@@ -7,9 +7,10 @@ RUN apt-get update -yqq && \
     && apt-get purge -y --auto-remove
 
 RUN apt-get install -y php5-xdebug && \
-    	echo "zend_extension=/usr/lib/php5/20131226/xdebug.so" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    	&& rm -rf /var/lib/apt/lists/* \
-        && apt-get purge -y --auto-remove
+        rm -rf /var/lib/apt/lists/* \
+        && apt-get purge -y --auto-remove && \
+    	echo "zend_extension=/usr/lib/php5/20131226/xdebug.so" > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 
 COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
